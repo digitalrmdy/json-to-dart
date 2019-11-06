@@ -167,8 +167,7 @@ class MetadataBuilder {
         return FieldMetadata(k, toCamelCaseString(name), "List<$className>");
       } else {
         final field = createFieldMetadata(k, v.first);
-        return FieldMetadata(
-            field.name, toCamelCaseString(name), "List<${field.type}>");
+        return FieldMetadata(field.jsonKey, field.name, "List<${field.type}>");
       }
     } else {
       return FieldMetadata(k, toCamelCaseString(name), toType(v));
