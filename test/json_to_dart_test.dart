@@ -12,10 +12,10 @@ void main() {
     final dynamic data = jsonDecode(inputJson);
     final fileNamePrefix = "example_dto";
     final className = "ExampleResponse";
-    final jsonKeyClassNameMap = {"Voorbeeld": "Example"};
+    final translations = {"Voorbeeld": "Example"};
     final outputContent = dartClassBuilder.buildDartFile(
         fileNamePrefix, className, data,
-        jsonKeyTranslations: jsonKeyClassNameMap);
+        jsonKeyTranslations: translations);
     writeResource("$fileNamePrefix.dart", outputContent);
   });
 }
