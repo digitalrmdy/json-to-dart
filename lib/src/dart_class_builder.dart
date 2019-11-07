@@ -47,7 +47,7 @@ class DartClassBuilder {
   }
 
   Constructor _buildConstructor(List<FieldMetadata> fields) {
-    final isOptional = fields.length > 3;
+    final isOptional = fields.length > 1;
     final params = fields.map((f) => toParam(f, isOptional)).toList();
     if (!isOptional) {
       return Constructor((b) => b..requiredParameters.addAll(params));
@@ -183,19 +183,7 @@ class MetadataBuilder {
   }
 
   String toType(dynamic value) {
-    if (value == null) return "String";
-
-    if (value is int) {
-      return "int";
-    } else if (value is double) {
-      return "double";
-    } else if (value is String) {
-      return "String";
-    } else if (value is bool) {
-      return "bool";
-    } else {
-      throw Exception("unknown type: $value");
-    }
+    return value.runtimeType.toString();
   }
 }
 
