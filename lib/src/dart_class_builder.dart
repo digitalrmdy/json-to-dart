@@ -164,10 +164,12 @@ class MetadataBuilder {
       if (v.isEmpty) {
         final className = createClassName(name);
         outClassMetadataList.add(ClassMetadata(className, [], false));
-        return FieldMetadata(k, toCamelCaseString(name), "List<$className>");
+        return FieldMetadata(
+            k, toCamelCaseString(name), "Iterable<$className>");
       } else {
         final field = createFieldMetadata(k, v.first);
-        return FieldMetadata(field.jsonKey, field.name, "List<${field.type}>");
+        return FieldMetadata(
+            field.jsonKey, field.name, "Iterable<${field.type}>");
       }
     } else {
       return FieldMetadata(k, toCamelCaseString(name), toType(v));
