@@ -50,9 +50,13 @@ class DartClassBuilder {
     final isOptional = fields.length > 1;
     final params = fields.map((f) => toParam(f, isOptional)).toList();
     if (!isOptional) {
-      return Constructor((b) => b..requiredParameters.addAll(params));
+      return Constructor((b) => b
+        ..requiredParameters.addAll(params)
+        ..constant = true);
     } else {
-      return Constructor((b) => b..optionalParameters.addAll(params));
+      return Constructor((b) => b
+        ..optionalParameters.addAll(params)
+        ..constant = true);
     }
   }
 
