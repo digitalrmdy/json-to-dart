@@ -69,8 +69,8 @@ class DartClassBuilder {
         ]);
       if (classMetadata.isRoot)
         b..fields.add(_createFromJsonFactoryStatic(classMetadata.name));
-      else
-        b..constructors.add(_createFromJsonConstructor(classMetadata.name));
+
+      b..constructors.add(_createFromJsonConstructor(classMetadata.name));
       b
         ..fields
             .addAll(classMetadata.fields.map((f) => _buildField(f)).toList())
